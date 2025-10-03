@@ -1,0 +1,65 @@
+﻿@model IEnumerable<APPR_Foudation.Models.DisasterIncident>
+
+@if (!Model.Any())
+{
+    <div class="col-12">
+        <div class="alert alert-info">
+            <h5>No recent incidents reported</h5>
+            <p class="mb-0">Be the first to report an emergency in your area.</p>
+        </div>
+    </div>
+}
+else
+{
+    @foreach (var incident in Model)
+    {
+        var severityColor = incident.Severity switch
+        {
+            APPR_Foudation.Models.SeverityLevel.Low => "success",
+            APPR_Foudation.Models.SeverityLevel.Medium => "warning",
+            APPR_Foudation.Models.SeverityLevel.High => "orange",
+            APPR_Foudation.Models.SeverityLevel.Critical => "danger",
+            _ => "secondary"
+        };
+
+        var truncatedDescription = string.IsNullOrEmpty(incident.Description)
+            ? "No description provided"
+            : (incident.Description.Length > 100
+                ? incident.Description.Substring(0, 100) + "..."
+                : incident.Description);
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-@severityColor text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">@incident.DisasterType</h6>
+                        <span class="badge bg-light text-dark">@incident.Severity</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">@incident.Title</h6>
+                    <p class="card-text small">@truncatedDescription</p>
+                    <div class="incident-meta">
+                        <small class="text-muted">
+                            <i class="fas fa-map-marker-alt me-1"></i>@incident.Location
+                        </small>
+                        <br>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-1"></i>@incident.IncidentDate.ToString("MMM dd, yyyy")
+                        </small>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent">
+                    @if (incident.ReportedByUser != null)
+                    {
+                        <small class="text-muted">Reported by @incident.ReportedByUser.FirstName</small>
+                    }
+                    else
+                    {
+                        <small class="text-muted">Reported by User #@incident.ReportedByUserId</small>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

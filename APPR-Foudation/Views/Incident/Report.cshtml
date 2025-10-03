@@ -1,0 +1,105 @@
+﻿@model APPR_Foudation.Models.DisasterIncident
+
+@{
+    ViewData["Title"] = "Report Disaster Incident";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Report Disaster Incident</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Report" method="post" class="needs-validation" novalidate>
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label"></label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter a clear, descriptive title">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="4"
+                                      placeholder="Provide detailed information about the incident"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Location" class="form-label"></label>
+                                <input asp-for="Location" class="form-control" placeholder="City, suburb, or area">
+                                <span asp-validation-for="Location" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="IncidentDate" class="form-label"></label>
+                                <input asp-for="IncidentDate" type="datetime-local" class="form-control">
+                                <span asp-validation-for="IncidentDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="DisasterType" class="form-label"></label>
+                                <select asp-for="DisasterType" asp-items="Html.GetEnumSelectList<DisasterType>()" class="form-select">
+                                    <option value="">Select Disaster Type</option>
+                                </select>
+                                <span asp-validation-for="DisasterType" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Severity" class="form-label"></label>
+                                <select asp-for="Severity" asp-items="Html.GetEnumSelectList<SeverityLevel>()" class="form-select">
+                                    <option value="">Select Severity Level</option>
+                                </select>
+                                <span asp-validation-for="Severity" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="EstimatedPeopleAffected" class="form-label"></label>
+                                <input asp-for="EstimatedPeopleAffected" type="number" class="form-control" min="0" placeholder="Optional">
+                                <span asp-validation-for="EstimatedPeopleAffected" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ContactPhone" class="form-label"></label>
+                                <input asp-for="ContactPhone" class="form-control" placeholder="Optional contact number">
+                                <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="UrgentAssistanceRequired" class="form-check-input">
+                            <label asp-for="UrgentAssistanceRequired" class="form-check-label"></label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="AdditionalNotes" class="form-label"></label>
+                            <textarea asp-for="AdditionalNotes" class="form-control" rows="3"
+                                      placeholder="Any additional information or specific needs"></textarea>
+                            <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Incident Report
+                            </button>
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

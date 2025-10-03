@@ -1,0 +1,139 @@
+﻿@model APPR_Foudation.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-lg-6 mx-auto">
+        <h2 class="text-center mb-4">Create Your Account</h2>
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Register" method="post" id="registerForm">
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label asp-for="FirstName" class="form-label"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label asp-for="LastName" class="form-label"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" type="email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" type="tel" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                               minlength="8" required
+                               oninput="validatePassword()" />
+                        <div class="form-text">
+                            <span id="passwordRequirements">Password must be at least 8 characters long</span>
+                        </div>
+                        <span id="passwordError" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+                               oninput="validatePassword()" />
+                        <span id="confirmPasswordError" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg" id="submitButton">
+                            <i class="fas fa-user-plus me-2"></i>Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <p>Already have an account? <a href="@Url.Action("Login", "Account")">Login here</a></p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const passwordError = document.getElementById('passwordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const submitButton = document.getElementById('submitButton');
+            const passwordRequirements = document.getElementById('passwordRequirements');
+
+            let isValid = true;
+
+            // Check minimum length
+            if (password.value.length < 8) {
+                passwordError.textContent = 'Password must be at least 8 characters long';
+                passwordRequirements.className = 'form-text text-danger';
+                isValid = false;
+            } else {
+                passwordError.textContent = '';
+                passwordRequirements.className = 'form-text text-success';
+                passwordRequirements.textContent = '✓ Password meets length requirement';
+            }
+
+            // Check if passwords match
+            if (confirmPassword.value && password.value !== confirmPassword.value) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                isValid = false;
+            } else {
+                confirmPasswordError.textContent = '';
+            }
+
+            // Enable/disable submit button
+            submitButton.disabled = !isValid;
+
+            return isValid;
+        }
+
+        // Validate on form submit
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            if (!validatePassword()) {
+                e.preventDefault();
+                alert('Please fix the password errors before submitting.');
+            }
+        });
+
+        // Initial validation
+        document.addEventListener('DOMContentLoaded', function() {
+            validatePassword();
+        });
+    </script>
+}

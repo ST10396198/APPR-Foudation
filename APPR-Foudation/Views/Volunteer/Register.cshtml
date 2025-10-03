@@ -1,0 +1,57 @@
+﻿@model APPR_Foudation.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Become a Volunteer";
+}
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="text-center mb-4">Join Our Volunteer Team</h2>
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Register" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Skills" class="form-label">Your Skills & Expertise</label>
+                        <textarea asp-for="Skills" class="form-control" rows="3"
+                                  placeholder="e.g., First Aid, Logistics, Communication, Medical, Construction, Counseling, etc."></textarea>
+                        <span asp-validation-for="Skills" class="text-danger"></span>
+                        <small class="form-text text-muted">Please list any skills or experience that could be helpful in relief efforts.</small>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label asp-for="Availability" class="form-label">Availability</label>
+                        <textarea asp-for="Availability" class="form-control" rows="3"
+                                  placeholder="e.g., Weekends, Evenings, Full-time, Part-time, Emergency call, etc."></textarea>
+                        <span asp-validation-for="Availability" class="text-danger"></span>
+                        <small class="form-text text-muted">Let us know when you're typically available to help.</small>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Register as Volunteer
+                        </button>
+                        <a href="@Url.Action("Tasks", "Volunteer")" class="btn btn-outline-secondary">
+                            <i class="fas fa-tasks me-2"></i>View Available Tasks First
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

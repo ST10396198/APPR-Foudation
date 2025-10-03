@@ -1,0 +1,457 @@
+﻿@{
+    ViewData["Title"] = "Gift of the Givers Foundation - Disaster Relief & Humanitarian Aid";
+}
+
+<!-- Hero Section -->
+<section class="hero-section bg-primary text-white py-5 mb-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3">Africa's Largest Disaster Relief Organization</h1>
+                <p class="lead mb-4">Saving lives, rebuilding communities, and restoring hope since 1992. Providing immediate response to natural disasters and humanitarian crises across South Africa and beyond.</p>
+                <div class="hero-buttons">
+                    <a href="@Url.Action("Donate", "Donation")" class="btn btn-warning btn-lg me-3 mb-2">
+                        <i class="fas fa-hand-holding-heart"></i> Donate Now
+                    </a>
+                    <a href="@Url.Action("Register", "Volunteer")" class="btn btn-outline-light btn-lg me-3 mb-2">
+                        <i class="fas fa-hands-helping"></i> Become a Volunteer
+                    </a>
+                    <a href="@Url.Action("Report", "Incident")" class="btn btn-light btn-lg mb-2">
+                        <i class="fas fa-exclamation-triangle"></i> Report Emergency
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="hero-stats bg-dark bg-opacity-50 p-4 rounded">
+                    <h4 class="mb-3">Our Impact</h4>
+                    <div class="row text-center">
+                        <div class="col-6 mb-3">
+                            <div class="stat-number h3 text-warning">30+</div>
+                            <div class="stat-label small">Years of Service</div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="stat-number h3 text-warning">45+</div>
+                            <div class="stat-label small">Countries Reached</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-number h3 text-warning">R2B+</div>
+                            <div class="stat-label small">Aid Delivered</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-number h3 text-warning">1000+</div>
+                            <div class="stat-label small">Projects</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Emergency Alert Section -->
+<section class="emergency-alert mb-5">
+    <div class="container">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-exclamation-circle fa-2x me-3"></i>
+                <div class="flex-grow-1">
+                    <h5 class="alert-heading mb-1">Emergency Response Active</h5>
+                    <p class="mb-0">Currently responding to flood disasters in multiple provinces. Your support is urgently needed.</p>
+                </div>
+                <a href="@Url.Action("Donate", "Donation")" class="btn btn-danger ms-3">Support Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Actions Section -->
+<section class="quick-actions mb-5">
+    <div class="container">
+        <h2 class="text-center mb-4">How You Can Help Today</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="action-icon mb-3">
+                            <i class="fas fa-hand-holding-usd fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Financial Donation</h5>
+                        <p class="card-text">Make a monetary contribution to support our emergency response efforts.</p>
+                        <a href="@Url.Action("Donate", "Donation")" class="btn btn-primary">Donate Funds</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="action-icon mb-3">
+                            <i class="fas fa-box-open fa-3x text-success"></i>
+                        </div>
+                        <h5 class="card-title">Goods & Supplies</h5>
+                        <p class="card-text">Donate food, clothing, medical supplies or other essential items.</p>
+                        <a href="@Url.Action("Donate", "Donation")" class="btn btn-success">Donate Goods</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="action-icon mb-3">
+                            <i class="fas fa-hands-helping fa-3x text-warning"></i>
+                        </div>
+                        <h5 class="card-title">Volunteer</h5>
+                        <p class="card-text">Join our team of dedicated volunteers making a difference on the ground.</p>
+                        <a href="@Url.Action("Register", "Volunteer")" class="btn btn-warning">Join Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 text-center border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="action-icon mb-3">
+                            <i class="fas fa-bullhorn fa-3x text-danger"></i>
+                        </div>
+                        <h5 class="card-title">Report Incident</h5>
+                        <p class="card-text">Report natural disasters or emergencies in your area for immediate response.</p>
+                        <a href="@Url.Action("Report", "Incident")" class="btn btn-danger">Report Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Current Operations Section -->
+<section class="current-operations bg-light py-5 mb-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Current Relief Operations</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card operation-card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Flood Relief - KwaZulu-Natal</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Emergency response to devastating floods affecting thousands of families. Providing:</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Food parcels</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Blankets and clothing</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Medical assistance</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Shelter support</li>
+                        </ul>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% Funded</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card operation-card h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">Drought Relief - Eastern Cape</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Providing water and sustenance to communities affected by severe drought conditions.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Water tanker deliveries</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Borehole installations</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Food supplements</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Livestock support</li>
+                        </ul>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60% Funded</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card operation-card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Medical Outreach - Nationwide</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Mobile medical clinics providing essential healthcare services to underserved communities.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Primary healthcare</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Chronic medication</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Maternal health services</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Health education</li>
+                        </ul>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45% Funded</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Incidents Section -->
+<section class="recent-incidents mb-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Recently Reported Incidents</h2>
+            <a href="@Url.Action("Report", "Incident")" class="btn btn-outline-primary">Report New Incident</a>
+        </div>
+        <div class="row" id="recentIncidentsContainer">
+            <!-- This will be populated via JavaScript -->
+            <div class="col-12 text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading incidents...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section bg-dark text-white py-5 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="mb-4">About Gift of the Givers</h2>
+                <p class="lead">Established in 1992, Gift of the Givers Foundation is the largest disaster response non-governmental organisation of African origin on the African continent.</p>
+                <p>Our mission is to provide immediate and effective humanitarian aid to communities affected by natural disasters, poverty, and conflict. We operate on the principles of compassion, efficiency, and resilience.</p>
+                <div class="mt-4">
+                    <a href="/Home/About" class="btn btn-outline-light me-3">Learn More About Us</a>
+                    <a href="/Home/Contact" class="btn btn-light">Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row text-center">
+                    <div class="col-6 mb-4">
+                        <div class="about-stat">
+                            <div class="stat-number display-6 text-warning">30+</div>
+                            <div class="stat-label">Years of Service</div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-4">
+                        <div class="about-stat">
+                            <div class="stat-number display-6 text-warning">45+</div>
+                            <div class="stat-label">Countries</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="about-stat">
+                            <div class="stat-number display-6 text-warning">R2B+</div>
+                            <div class="stat-label">Humanitarian Aid</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="about-stat">
+                            <div class="stat-number display-6 text-warning">100%</div>
+                            <div class="stat-label">Donation Policy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Urgent Needs Section -->
+<section class="urgent-needs mb-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Urgently Needed Items</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card text-center border-warning">
+                    <div class="card-body">
+                        <i class="fas fa-utensils fa-2x text-warning mb-3"></i>
+                        <h5 class="card-title">Non-Perishable Food</h5>
+                        <ul class="list-unstyled">
+                            <li>Rice & Pasta</li>
+                            <li>Canned Goods</li>
+                            <li>Baby Formula</li>
+                            <li>Cooking Oil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center border-info">
+                    <div class="card-body">
+                        <i class="fas fa-tshirt fa-2x text-info mb-3"></i>
+                        <h5 class="card-title">Clothing & Blankets</h5>
+                        <ul class="list-unstyled">
+                            <li>Winter Jackets</li>
+                            <li>Warm Blankets</li>
+                            <li>Baby Clothes</li>
+                            <li>Waterproof Gear</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center border-danger">
+                    <div class="card-body">
+                        <i class="fas fa-first-aid fa-2x text-danger mb-3"></i>
+                        <h5 class="card-title">Medical Supplies</h5>
+                        <ul class="list-unstyled">
+                            <li>First Aid Kits</li>
+                            <li>Chronic Medication</li>
+                            <li>Bandages & Dressings</li>
+                            <li>Sanitary Products</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Stories of Hope</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card h-100">
+                    <div class="card-body">
+                        <div class="testimonial-text mb-3">
+                            <i class="fas fa-quote-left text-primary me-2"></i>
+                            When the floods destroyed our home, Gift of the Givers was the first to arrive with food, blankets, and hope. They saved our family.
+                            <i class="fas fa-quote-right text-primary ms-2"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>- Sarah M., KZN Flood Survivor</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card h-100">
+                    <div class="card-body">
+                        <div class="testimonial-text mb-3">
+                            <i class="fas fa-quote-left text-primary me-2"></i>
+                            Volunteering with Gift of the Givers has been the most rewarding experience. Seeing immediate impact in communities keeps me going.
+                            <i class="fas fa-quote-right text-primary ms-2"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>- David T., Volunteer</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card h-100">
+                    <div class="card-body">
+                        <div class="testimonial-text mb-3">
+                            <i class="fas fa-quote-left text-primary me-2"></i>
+                            Their medical team provided free healthcare when we had nowhere else to turn. Thank you for restoring our community's health.
+                            <i class="fas fa-quote-right text-primary ms-2"></i>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>- Community Leader, Eastern Cape</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Emergency Contact Banner -->
+<section class="emergency-contact bg-danger text-white py-4 mt-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="mb-1"><i class="fas fa-phone-alt me-2"></i>Emergency Contact</h4>
+                <p class="mb-0">For immediate disaster response and emergency assistance</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <a href="tel:0800786911" class="btn btn-light btn-lg">
+                    <i class="fas fa-phone me-2"></i>0800 786 911
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Load recent incidents
+            loadRecentIncidents();
+
+            function loadRecentIncidents() {
+                $.get('@Url.Action("GetRecentIncidents", "Home")', function(data) {
+                    $('#recentIncidentsContainer').html(data);
+                }).fail(function() {
+                    $('#recentIncidentsContainer').html(
+                        '<div class="col-12">' +
+                        '<div class="alert alert-warning">' +
+                        '<h5>Unable to load recent incidents</h5>' +
+                        '<p class="mb-0">Please try again later.</p>' +
+                        '</div>' +
+                        '</div>'
+                    );
+                });
+            }
+        });
+    </script>
+}
+}
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+        border-radius: 0 0 20px 20px;
+    }
+
+    .hero-stats {
+        backdrop-filter: blur(10px);
+    }
+
+    .stat-number {
+        font-weight: bold;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+
+    .operation-card {
+        transition: transform 0.3s ease;
+    }
+
+        .operation-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .testimonial-card {
+        border-left: 4px solid #0d6efd;
+    }
+
+    .action-icon {
+        opacity: 0.8;
+    }
+
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+    .emergency-contact {
+        border-radius: 10px 10px 0 0;
+    }
+</style>
+
+<!-- Development Tools - Remove in production -->
+@if (Context.Request.Host.Value.Contains("localhost"))
+{
+    <div class="container mt-3">
+        <div class="alert alert-info">
+            <small>
+                <strong>Development Tools:</strong>
+                <a href="@Url.Action("Index", "SeedData")" class="alert-link">Add Sample Data</a> |
+                <a href="@Url.Action("AddSampleTasks", "SeedData")" class="alert-link">Add Tasks Only</a>
+            </small>
+        </div>
+    </div>
+}

@@ -1,0 +1,47 @@
+﻿@model List<APPR_Foudation.Models.User>
+
+@{
+    ViewData["Title"] = "Debug Users";
+}
+
+<h2>Users in Database</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        No users found in the database.
+    </div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Registered</th>
+                <th>Password Hash</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserId</td>
+                    <td>@user.FirstName @user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.DateRegistered</td>
+                    <td title="@user.PasswordHash">@user.PasswordHash.Substring(0, Math.Min(20, user.PasswordHash.Length))...</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div class="mt-3">
+    <a href="@Url.Action("Register", "Account")" class="btn btn-primary">Back to Registration</a>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Home</a>
+</div>

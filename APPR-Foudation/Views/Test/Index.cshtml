@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Database Test";
+}
+
+<h2>Database Connection Test</h2>
+
+<div class="alert @(ViewBag.CanConnect ? "alert-success" : "alert-danger")">
+    Database Connection: @(ViewBag.CanConnect ? "✅ SUCCESS" : "❌ FAILED")
+</div>
+
+<p><strong>Database:</strong> @ViewBag.DatabaseName</p>
+<p><strong>Users Count:</strong> @ViewBag.UsersCount</p>
+
+<a href="@Url.Action("Register", "Account")" class="btn btn-primary">Test Registration</a>

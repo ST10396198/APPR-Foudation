@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Sample Data Management";
+}
+
+<div class="container mt-4">
+    <h2>Sample Data Management</h2>
+    <p class="text-muted">Use this page to add sample data for testing purposes.</p>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>@TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>@TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Volunteer Tasks</h5>
+                </div>
+                <div class="card-body">
+                    <p>Add sample volunteer tasks to test the volunteer management system.</p>
+                    <a href="@Url.Action("AddSampleTasks", "SeedData")" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Add Sample Tasks
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Disaster Incidents</h5>
+                </div>
+                <div class="card-body">
+                    <p>Add sample disaster incidents to test the reporting system.</p>
+                    <a href="@Url.Action("AddSampleIncidents", "SeedData")" class="btn btn-warning">
+                        <i class="fas fa-plus me-2"></i>Add Sample Incidents
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-trash me-2"></i>Clear Data</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-danger"><strong>Warning:</strong> This will remove all data except users.</p>
+                    <a href="@Url.Action("ClearAllData", "SeedData")" class="btn btn-danger"
+                       onclick="return confirm('⚠️ This will delete ALL data except users! Are you sure?')">
+                        <i class="fas fa-trash me-2"></i>Clear All Data
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0"><i class="fas fa-database me-2"></i>Current Data Status</h5>
+        </div>
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-md-3 mb-3">
+                    <div class="border rounded p-3">
+                        <h4 id="usersCount">Loading...</h4>
+                        <p class="mb-0">Users</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="border rounded p-3">
+                        <h4 id="tasksCount">Loading...</h4>
+                        <p class="mb-0">Volunteer Tasks</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="border rounded p-3">
+                        <h4 id="incidentsCount">Loading...</h4>
+                        <p class="mb-0">Disaster Incidents</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="border rounded p-3">
+                        <h4 id="donationsCount">Loading...</h4>
+                        <p class="mb-0">Donations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Home
+        </a>
+        <a href="@Url.Action("Tasks", "Volunteer")" class="btn btn-outline-primary ms-2">
+            <i class="fas fa-tasks me-2"></i>View Volunteer Tasks
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Load data counts
+            loadDataCounts();
+
+            function loadDataCounts() {
+                $.get('@Url.Action("GetDataCounts", "SeedData")', function(data) {
+                    $('#usersCount').text(data.users);
+                    $('#tasksCount').text(data.tasks);
+                    $('#incidentsCount').text(data.incidents);
+                    $('#donationsCount').text(data.donations);
+                });
+            }
+        });
+    </script>
+}
